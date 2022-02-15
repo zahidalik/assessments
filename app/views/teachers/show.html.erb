@@ -1,0 +1,21 @@
+<div class="min-h-screen">
+  <div class="mt-8 oswald-light text-5xl flex justify-center items-center"><%= @teacher.name %></div>
+  <div class="grid grid-cols-10">
+    <div class="col-span-3 mt-10 flex flex-col items-center">
+      <%= turbo_frame_tag "new_classroom" do %>
+        <div>
+          <%= link_to new_teacher_classroom_path(@teacher), class: "bg-blue-700 px-3 py-2 text-gray-50 lato-bold" do %>
+            Add a classroom for assessment
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-span-6 mt-8 mb-16 flex flex-col">
+      <%= turbo_frame_tag "classrooms" do %>
+        <% @teacher.classrooms.each do |classroom| %>
+          <%= render "classrooms/classroom", classroom: classroom %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

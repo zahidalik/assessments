@@ -1,0 +1,52 @@
+<%= turbo_frame_tag(dom_id(assessment)) do %>
+  <table class="table-fixed my-4 border border-4 border-slate-400 text-left">
+    <thead>
+      <tr>
+        <th class="px-2 py-1 border border-slate-400">Subject: <span class="underline"><%= assessment.subject %></span></th>
+        <th>
+          <%= link_to edit_teacher_classroom_subject_assessment_path(@teacher, @classroom, assessment), class: "px-1 bg-sky-600 text-gray-50" do %>
+            Edit
+          <% end %>
+          <%= link_to teacher_classroom_subject_assessment_path(@teacher, @classroom, assessment), data: {turbo_method: :delete, turbo_confirm: "Are you sure"}, class: "px-1 bg-red-600 text-gray-50" do %>
+            Delete
+          <% end %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="px-2 py-1 border border-slate-400">Knowledge</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.knowledge) %></td>
+      </tr>
+      <tr>  
+        <th class="px-2 py-1 border border-slate-400">Presentation</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.presentation) %></td>
+      </tr>
+      <tr>  
+        <th class="px-2 py-1 border border-slate-400">Clear Explanation</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.clear_explanation) %></td>
+      </tr>
+      <tr> 
+        <th class="px-2 py-1 border border-slate-400">Punctuality</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.punctuality) %></td>
+      </tr>
+      <tr> 
+        <th class="px-2 py-1 border border-slate-400">Hygiene and Personality</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.hygiene_and_personality) %></td>
+      </tr>
+      <tr>  
+        <th class="px-2 py-1 border border-slate-400">Akhlaq and Behaviour</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.akhlaq_and_behaviour) %></td>
+      </tr>
+      <tr>  
+        <th class="px-2 py-1 border border-slate-400">Communication with Students</th>
+        <td class="px-2 py-1 border border-slate-400"><%= categorise(assessment.communication_with_students) %></td>
+      </tr>
+      <tr>
+        <th class="px-2 py-1 border border-slate-400">Remarks</th>
+        <td class="px-2 py-1 border border-slate-400"><%= assessment.remarks %></td>
+      </tr>
+      <tr><td class="pl-4 text-sm">Submitted at: <span class="underline"><%= assessment.created_at.strftime("%h %m, %I:%M %p") %></span></td></tr>
+    </tbody>
+  </table>
+<% end %>

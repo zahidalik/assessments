@@ -1,0 +1,5 @@
+<% provide(:button_name, "Edit Classroom") %>
+
+<%= turbo_frame_tag(dom_id(@classroom)) do %>
+  <%= render "classrooms/form", teacher: @teacher, classroom: @classroom %>
+<% end %>

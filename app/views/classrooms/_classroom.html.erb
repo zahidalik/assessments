@@ -1,0 +1,63 @@
+<%= turbo_frame_tag(dom_id(classroom)) do %>
+  <div class="w-full bg-gray-200 px-6 py-4 rounded">
+    <div class="flex flex-col space-y-7">
+      <div class="montserrat-regular text-xl text-gray-800">
+        <%= classroom.name %> <%= classroom.section %> <span class="text-sm px-1 bg-gray-400"><%= classroom.term.inspect %></span>
+        <%= link_to edit_teacher_classroom_path(@teacher, classroom), class: "ml-4 text-sky-700" do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+      </div>
+      <%= turbo_frame_tag "assessment_counts" do %>
+        <% if classroom.subject_assessments.any? %>
+          <div class="">
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Knowledge</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= knowledge_percentage(classroom) %>%"> <%= knowledge_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:knowledge) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Presentation</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= presentation_percentage(classroom) %>%"> <%= presentation_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:presentation) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Clear Explanation</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= clear_explanation_percentage(classroom) %>%"> <%= clear_explanation_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:clear_explanation) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Punctuality</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= punctuality_percentage(classroom) %>%"> <%= punctuality_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:punctuality) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Hygiene and Personality</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= hygiene_and_personality_percentage(classroom) %>%"> <%= hygiene_and_personality_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:hygiene_and_personality) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Akhlaq and Behaviour</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= akhlaq_and_behaviour_percentage(classroom) %>%"> <%= akhlaq_and_behaviour_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:akhlaq_and_behaviour) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full">
+              <h1 class="lato-bold">Communication with Students</h1>
+              <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-lg" style="width: <%= communication_with_students_percentage(classroom) %>%"> <%= communication_with_students_percentage(classroom) %>%</div>
+              <div class="text-right text-sm text-gray-600"><%= classroom.subject_assessments.sum(:communication_with_students) %> out of <%= classroom.subject_assessments.count * 5 %></div>
+            </div>
+            <div>
+              <%= link_to teacher_classroom_subject_assessments_url(@teacher, classroom), data: {"turbo_frame": "_top"}, class: "mt-6 bg-cyan-700 py-1 rounded text-gray-50 lato-bold flex flex-row justify-center items-center" do %>
+                Details
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <%= turbo_frame_tag "new_assessment" do %>
+        <%= link_to new_teacher_classroom_subject_assessment_path(classroom.teacher, classroom), class: "bg-blue-700 px-3 py-2 rounded text-gray-50 lato-bold" do %>
+          New Assessment
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

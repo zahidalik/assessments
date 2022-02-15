@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url('Lato-Bold.ttf');
+}
+@font-face {
+  font-family: 'Lato-Light';
+  src: url('Lato-Light.ttf');
+}
+@font-face {
+  font-family: 'Montserrat-Ligth';
+  src: url('Montserrat-Light.ttf');
+}
+@font-face {
+  font-family: 'Oswald-Light';
+  src: url('Oswald-Light.ttf');
+}
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('Montserrat-Regular.ttf');
+}
+@font-face {
+  font-family: 'Kaushan-Regular';
+  src: url('KaushanScript-Regular.ttf');
+}
+
+.lato-bold {
+  font-family: 'Lato-Bold';
+}
+
+.lato-light {
+  font-family: 'Lato-Light';
+}
+
+.oswald-light {
+  font-family: 'Oswald-Light';
+}
+
+.montserrat-light {
+  font-family: 'Montserrat-Light';
+}
+
+.montserrat-regular {
+  font-family: 'Montserrat-Regular';
+}
+
+.kaushan-regular {
+  font-family: 'Kaushan-Regular';
+}

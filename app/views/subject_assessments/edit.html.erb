@@ -1,0 +1,10 @@
+<% provide(:button_name, "Edit Assessment") %>
+
+<%= turbo_frame_tag(dom_id(@subject_assessment)) do %>
+  <div class="mt-16 flex flex-col justify-center items-center">
+    <%= link_to teacher_classroom_subject_assessments_path(@teacher, @classroom), data: {"turbo_frame": "_top"}, class: "text-gray-500" do %>
+      <i class="fa-solid fa-circle-xmark"></i>
+    <% end %>
+    <%= render "subject_assessments/form", teacher: @teacher, classroom: @classroom, subject_assessment: @subject_assessment %>
+  </div>
+<% end %>

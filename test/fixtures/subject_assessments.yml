@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  knowledge: 1
+  presentation: 1
+  clear_explanation: 1
+  punctuality: 1
+  hygiene_and_personality: 1
+  akhlaq_and_behaviour: 1
+  communication_with_students: 1
+  remarks: MyString
+  teacher: one
+  classroom: one
+
+two:
+  subject: MyString
+  knowledge: 1
+  presentation: 1
+  clear_explanation: 1
+  punctuality: 1
+  hygiene_and_personality: 1
+  akhlaq_and_behaviour: 1
+  communication_with_students: 1
+  remarks: MyString
+  teacher: two
+  classroom: two

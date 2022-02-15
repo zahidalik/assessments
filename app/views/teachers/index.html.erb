@@ -1,0 +1,24 @@
+<div class="min-h-screen">
+  <div class="grid grid-cols-11">
+    <div class="col-span-3 justify-start">
+      <div class="mt-16 flex flex-col items-center">
+        <%= turbo_frame_tag "new_teacher" do %>
+          <%= link_to new_teacher_path, class: "px-3 py-2 bg-blue-700 text-gray-50 montserrat-regular rounded" do %>
+            New Teacher
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-span-8 justify-start">
+      <div class="mt-6 flex flex-col"></div>
+        <%= turbo_frame_tag "teachers" do %>
+          <% @teachers.each do |teacher| %>
+            <div class="flex flex-col space-y-3">  
+              <%= render "teachers/teacher", teacher: teacher %> 
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

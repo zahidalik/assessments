@@ -1,0 +1,8 @@
+<% provide(:button_name, "Add Assessment") %>
+
+<%= turbo_frame_tag "new_assessment" do %>
+  <%= link_to teacher_path(@teacher), class: "text-gray-500" do %>
+    <i class="fa-solid fa-circle-xmark"></i>
+  <% end %>
+  <%= render "subject_assessments/form", teacher: @teacher, classroom: @classroom, subject_assessment: @subject_assessment %>
+<% end %>
