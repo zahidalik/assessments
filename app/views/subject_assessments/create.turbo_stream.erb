@@ -1,4 +1,4 @@
-<%= turbo_stream.update("assessment_counts") do %>
+<%= turbo_stream.update("assessment_counts_#{@classroom.id}") do %>
   <div class="">
     <div class="w-full bg-gray-200 rounded-full">
       <h1 class="lato-bold">Knowledge</h1>
@@ -43,6 +43,6 @@
   </div>
 <% end %>
 
-<%= turbo_stream.replace "assessment_flash" do %>
-  <div class="mt-4 bg-green-300 flex justify-center items-center text-green-700 py-1 rounded animate__animated animate__rubberBand">assessment added</div>
+<%= turbo_stream.update "assessment_flash" do %>
+  <div class="mt-4 bg-green-300 flex justify-center items-center text-green-700 py-1 rounded animate__animated animate__bounceInRight">assessment added</div>
 <% end %>

@@ -7,8 +7,8 @@
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
       </div>
-      <%= turbo_frame_tag "assessment_counts" do %>
-        <% if classroom.subject_assessments.any? %>
+      <% if classroom.subject_assessments.any? %>
+        <%= turbo_frame_tag "assessment_counts_#{classroom.id}" do %>
           <div class="">
             <div class="w-full bg-gray-200 rounded-full">
               <h1 class="lato-bold">Knowledge</h1>
