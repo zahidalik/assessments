@@ -42,3 +42,7 @@
     </div>
   </div>
 <% end %>
+
+<%= turbo_stream.replace "assessment_flash" do %>
+  <div class="bg-green-700 animate__animated animate__rubberBand">assessment added</div>
+<% end %>
