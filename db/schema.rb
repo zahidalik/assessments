@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_11_165055) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_16_192121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_11_165055) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subject_assessments", force: :cascade do |t|
@@ -61,7 +67,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_11_165055) do
     t.index ["slug"], name: "index_teachers_on_slug", unique: true
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
   add_foreign_key "classrooms", "teachers"
   add_foreign_key "subject_assessments", "classrooms"
   add_foreign_key "subject_assessments", "teachers"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

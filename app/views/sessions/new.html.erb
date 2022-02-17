@@ -1,0 +1,14 @@
+<div class="min-h-screen w-full flex flex-col justify-start items-center">
+  <div class="mt-10 py-16 bg-slate-200 h-1/2 w-2/3 rounded-lg flex flex-col justify-center items-center space-y-7">
+    <div class="montserrat-regular text-4xl text-gray-800">Log in</div>
+    <%= form_for :session, url: login_url, html: {class: "flex flex-col justify-center items-start space-y-3"} do |f| %>
+      <%= f.label :username, class: "text-gray-800 text-xl font-light" %>
+      <%= f.text_field :username, class: "rounded px-2 py-1 text-lg border border-slate-400 focus:outline-none focus:border-2 focus:border-blue-600" %>
+
+      <%= f.label :password, class: "text-gray-800 text-xl font-light" %>
+      <%= f.password_field :password, class: "rounded px-2 py-1 text-lg border border-slate-400 focus:outline-none focus:border-2 focus:border-blue-600" %>
+ 
+      <%= f.submit "Log in", class: "rounded py-2 bg-blue-700 text-xl text-gray-50 montserrat-regular w-full" %>
+    <% end %>
+  </div>
+</div>

@@ -53,10 +53,12 @@
           </div>
         <% end %>
       <% end %>
+      <% if current_user.is_super_admin? || current_user.is_admin?  %>
       <%= turbo_frame_tag "new_assessment" do %>
         <%= link_to new_teacher_classroom_subject_assessment_path(classroom.teacher, classroom), class: "bg-blue-700 px-3 py-2 rounded text-gray-50 lato-bold" do %>
           New Assessment
         <% end %>
+      <% end %>
       <% end %>
     </div>
   </div>

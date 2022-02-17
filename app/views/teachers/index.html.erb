@@ -1,17 +1,27 @@
 <div class="min-h-screen">
   <div class="grid grid-cols-11">
-    <div class="col-span-3 justify-start">
-      <div class="mt-16 flex flex-col items-center">
-        <%= turbo_frame_tag "new_teacher" do %>
-          <%= link_to new_teacher_path, class: "px-3 py-2 bg-blue-700 text-gray-50 montserrat-regular rounded" do %>
-            New Teacher
+    <div class="min-h-screen col-span-3 border-r border-gray-300 rounded-lg justify-start">
+      <% if current_user.is_super_admin? || current_user.is_admin? %>
+        <div class="mt-16 flex flex-col items-center">
+          <%= turbo_frame_tag "new_teacher" do %>
+            <%= link_to new_teacher_path, class: "px-3 py-2 bg-blue-700 text-gray-50 montserrat-regular rounded" do %>
+              New Teacher
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% else %>
+        <div class="mt-16 flex flex-col items-center">
+          <div class="montserrat-regular text-gray-700">
+            You are viewing as guest user.
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-span-8 justify-start">
-      <div class="mt-6 flex flex-col"></div>
+      <div class="mt-12 ml-20 oswald-light text-3xl text-gray-700 flex flex-col">
+        <span class="indent-8">All Users</span>
+        <div class="mt-8">
           <%= turbo_frame_tag "teachers" do %>
             <% @teachers.each do |teacher| %>
               <div class="flex flex-col space-y-3">  
@@ -19,6 +29,8 @@
               </div>
             <% end %>
           <% end %>
+        </div>
       </div>
     </div>
+  </div>
 </div>

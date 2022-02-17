@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+user = User.create!(name: "Zahid Ali Khan", username: "zahidali", password: "myonapp5")
+role = Role.create!(kind: "super admin")
+UserRole.create!(user_id: user.id, role_id: role.id)

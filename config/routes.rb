@@ -3,10 +3,20 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#home"
+
+  get 'login', to: "sessions#new"
+  post 'login', to: "sessions#create"
+  delete 'logout', to: "sessions#destroy"
   
   resources :teachers do
     resources :classrooms do
       resources :subject_assessments
     end
   end
+
+  resources :users do
+    resources :user_roles
+  end
+  
+  resources :roles
 end

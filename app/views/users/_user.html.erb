@@ -1,0 +1,26 @@
+<%= turbo_frame_tag(dom_id(user)) do %>
+  <div class="py-2 oswald-light text-2xl text-gray-700 flex flex-row items-baseline space-x-3">
+    <div><%= user.name %></div>
+    <div class="lato-bold text-sm bg-gray-200 px-2 py-1">Username: <%= user.username %></div>
+      <div class="montserrat-regular bg-gray-200 px-2 py-1 text-sm text-gray-700">
+        Roles:
+        <% user.user_roles.each do |user_role| %>
+          <%= render "user_roles/user_role", user_role: user_role %>
+        <% end %>
+        <% if current_user.is_super_admin? %>
+          <%= turbo_frame_tag "new_user_role" do %>
+            <%= link_to new_user_user_role_path(user), class: "lato-bold text-sm text-gray-50 px-1 bg-cyan-700" do %>
+              add roles
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <div>
+      <% if current_user.is_super_admin? %>
+        <%= link_to edit_user_path(user), class: "text-blue-700 text-lg" do %>
+          <i class="fa-solid fa-edit"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

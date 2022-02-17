@@ -1,4 +1,6 @@
 class ClassroomsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :user_should_be_admin, only: [:new, :create]
 
   def edit
     @teacher = Teacher.friendly.find(params[:teacher_id])

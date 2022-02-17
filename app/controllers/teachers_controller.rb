@@ -1,4 +1,6 @@
 class TeachersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @teachers = Teacher.all.order(name: :asc)
   end

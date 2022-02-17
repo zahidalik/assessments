@@ -1,0 +1,10 @@
+<%= turbo_frame_tag(dom_id(role)) do %>
+  <div>
+    <span class="text-gray-700 text-lg"><%= role.kind %></span>
+    <%# <% if current_user.is_super_admin? %>
+      <%# <%= link_to edit_role_path(role), class: "text-sm text-blue-600" do %>
+        <%# <i class="fa-solid fa-edit"></i> %>
+      <%# <% end %>
+    <%# <% end %>
+  </div>
+<% end %>

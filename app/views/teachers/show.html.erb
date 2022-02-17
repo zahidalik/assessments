@@ -2,11 +2,17 @@
   <div class="mt-8 oswald-light text-5xl flex justify-center items-center"><%= @teacher.name %></div>
   <div class="grid grid-cols-10">
     <div class="col-span-3 mt-10 flex flex-col items-center">
-      <%= turbo_frame_tag "new_classroom" do %>
-        <div>
-          <%= link_to new_teacher_classroom_path(@teacher), class: "bg-blue-700 px-3 py-2 text-gray-50 lato-bold" do %>
-            Add a classroom for assessment
-          <% end %>
+      <% if current_user.is_super_admin? || current_user.is_admin? %>
+        <%= turbo_frame_tag "new_classroom" do %>
+          <div>
+            <%= link_to new_teacher_classroom_path(@teacher), class: "bg-blue-700 px-3 py-2 text-gray-50 lato-bold" do %>
+              Add a classroom for assessment
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="montserrat-regular text-gray-700">
+          You are viewing as guest user.
         </div>
       <% end %>
     </div>

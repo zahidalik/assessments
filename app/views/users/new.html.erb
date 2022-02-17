@@ -1,0 +1,11 @@
+<% provide(:button_name, "Create user account") %>
+
+<%= turbo_frame_tag "new_user" do %>
+  <div class="flex flex-col justify-start items-center">
+    <%= link_to user_path(current_user), data: {"turbo_frame": "_top"}, class: "text-gray-500" do %>
+      <i class="fa-solid fa-circle-xmark"></i> close
+    <% end %>
+    <div class="montserrat-regular text-xl text-gray-700">New user</div>
+    <%= render "users/form", user: @user %>
+  </div>
+<% end %>

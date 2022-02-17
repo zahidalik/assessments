@@ -1,0 +1,10 @@
+<% provide(:button_name, "Edit user account") %>
+
+<%= turbo_frame_tag(dom_id(@user)) do %>
+  <div class="flex flex-col justify-center items-center">
+    <%= link_to user_path(current_user), data: {"turbo_frame": "_top"}, class: "text-gray-500" do %>
+      <i class="fa-solid fa-circle-xmark"></i> close
+    <% end %>
+    <%= render "users/form", user: @user %>
+  </div>
+<% end %>

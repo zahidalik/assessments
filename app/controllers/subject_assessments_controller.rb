@@ -1,4 +1,6 @@
 class SubjectAssessmentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :user_should_be_admin, except: [:index]
 
   def index
     @teacher = Teacher.friendly.find(params[:teacher_id])
