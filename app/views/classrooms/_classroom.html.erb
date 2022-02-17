@@ -6,6 +6,11 @@
         <%= link_to edit_teacher_classroom_path(@teacher, classroom), class: "ml-4 text-sky-700" do %>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
+        <% if current_user.is_super_admin? %>
+          <%= link_to teacher_classroom_path(@teacher, classroom), data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete classroom?"}, class: "ml-4 text-red-500" do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        <% end %>
       </div>
       <% if classroom.subject_assessments.any? %>
         <%= turbo_frame_tag "assessment_counts_#{classroom.id}" do %>

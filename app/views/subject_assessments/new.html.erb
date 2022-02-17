@@ -5,7 +5,7 @@
     <i class="fa-solid fa-circle-xmark"></i>
   <% end %>
   <%= render "subject_assessments/form", teacher: @teacher, classroom: @classroom, subject_assessment: @subject_assessment %>
-  <%= turbo_frame_tag "assessment_flash" do %>
+  <%= turbo_frame_tag "assessment_flash_#{@classroom.id}" do %>
     <div></div>
   <% end %>
 <% end %>

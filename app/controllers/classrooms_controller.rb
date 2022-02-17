@@ -1,6 +1,6 @@
 class ClassroomsController < ApplicationController
   before_action :authenticate_user!
-  before_action :user_should_be_admin, only: [:new, :create]
+  before_action :user_should_be_admin, only: [:new, :create, :destroy]
 
   def edit
     @teacher = Teacher.friendly.find(params[:teacher_id])
@@ -34,6 +34,18 @@ class ClassroomsController < ApplicationController
       end
     else
       render :new, status: :bad_request
+    end
+  end
+
+  def destroy
+    @teacher = Teacher.friendly.find(params[:teacher_id])
+    @classroom = Classroom.find(params[:id])
+
+    if @classroom.delete
+      respond_to do |format|
+        format.turbo_stream
+        format.html {redirect_to teacher_url(@teacher)}
+      end
     end
   end
 

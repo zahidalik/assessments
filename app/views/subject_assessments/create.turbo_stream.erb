@@ -43,6 +43,6 @@
   </div>
 <% end %>
 
-<%= turbo_stream.update "assessment_flash" do %>
+<%= turbo_stream.update "assessment_flash_#{@classroom.id}" do %>
   <div class="mt-4 bg-green-300 flex justify-center items-center text-green-700 py-1 rounded animate__animated animate__bounceInRight">assessment added</div>
 <% end %>
