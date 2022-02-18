@@ -1,6 +1,6 @@
 <div class="min-h-screen">
-  <div class="grid grid-cols-11">
-    <div class="col-span-3 min-h-screen justify-start border-r border-gray-300 rounded-lg">
+  <div class="md:grid md:grid-cols-11">
+    <div class="md:col-span-3 md:min-h-screen md:justify-start md:border-r md:border-gray-300 md:rounded-lg">
       <div class="mt-20 flex flex-col items-center">
         <%= turbo_frame_tag "new_user" do %>
           <%= link_to new_user_path, class: "px-3 py-2 bg-blue-700 text-gray-50 montserrat-regular rounded" do %>
@@ -27,9 +27,9 @@
       <%# </div> %>
     </div>
 
-    <div class="col-span-8 justify-start">
-      <div class="mt-16 ml-8 flex flex-col">
-        <span class="mb-12 oswald-light text-3xl text-gray-700 indent-8">All Users</span>
+    <div class="md:col-span-8 justify-start">
+      <div class="mt-8 md:mt-16 md:ml-8 flex flex-col">
+        <span class="mb-8 md:mb-12 oswald-light text-3xl text-gray-700 text-center md:text-left md:indent-8">All Users</span>
         <%= turbo_frame_tag "users" do %>
           <% User.all.each do |user| %>
             <div class="flex flex-col space-y-3">  

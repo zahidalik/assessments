@@ -9,7 +9,7 @@
   <% end %>
 
   <%= f.text_field  :subject, placeholder: "Subject", class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :knowledge, class: "text-gray-700 montserrat-regular font-bold"%>
     <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :knowledge, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :knowledge, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
@@ -17,15 +17,15 @@
     <span class="bg-green-600 text-gray-50 px-1 py-1 rounded">Very Good <%= f.radio_button :knowledge, 4, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-700 text-gray-50 px-1 py-1 rounded">Excellent <%= f.radio_button :knowledge, 5, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
   </div>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :presentation, class: "text-gray-700 montserrat-regular font-bold"%>
-    <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :presentation, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
+    <span class="bg-red-600 text-gray-50 px-1 py-1">Poor <%= f.radio_button :presentation, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :presentation, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-500 text-gray-50 px-1 py-1 rounded">Good <%= f.radio_button :presentation, 3, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-600 text-gray-50 px-1 py-1 rounded">Very Good <%= f.radio_button :presentation, 4, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-700 text-gray-50 px-1 py-1 rounded">Excellent <%= f.radio_button :presentation, 5, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
   </div>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :clear_explanation, class: "text-gray-700 montserrat-regular font-bold"%>
     <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :clear_explanation, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :clear_explanation, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
@@ -33,7 +33,7 @@
     <span class="bg-green-600 text-gray-50 px-1 py-1 rounded">Very Good <%= f.radio_button :clear_explanation, 4, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-700 text-gray-50 px-1 py-1 rounded">Excellent <%= f.radio_button :clear_explanation, 5, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
   </div>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :punctuality, class: "text-gray-700 montserrat-regular font-bold"%>
     <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :punctuality, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :punctuality, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
@@ -41,7 +41,7 @@
     <span class="bg-green-600 text-gray-50 px-1 py-1 rounded">Very Good <%= f.radio_button :punctuality, 4, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-700 text-gray-50 px-1 py-1 rounded">Excellent <%= f.radio_button :punctuality, 5, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
   </div>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :hygiene_and_personality, class: "text-gray-700 montserrat-regular font-bold"%>
     <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :hygiene_and_personality, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :hygiene_and_personality, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
@@ -49,7 +49,7 @@
     <span class="bg-green-600 text-gray-50 px-1 py-1 rounded">Very Good <%= f.radio_button :hygiene_and_personality, 4, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-700 text-gray-50 px-1 py-1 rounded">Excellent <%= f.radio_button :hygiene_and_personality, 5, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
   </div>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :akhlaq_and_behaviour, class: "text-gray-700 montserrat-regular font-bold"%>
     <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :akhlaq_and_behaviour, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :akhlaq_and_behaviour, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
@@ -57,7 +57,7 @@
     <span class="bg-green-600 text-gray-50 px-1 py-1 rounded">Very Good <%= f.radio_button :akhlaq_and_behaviour, 4, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-green-700 text-gray-50 px-1 py-1 rounded">Excellent <%= f.radio_button :akhlaq_and_behaviour, 5, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
   </div>
-  <div>
+  <div class="flex flex-col space-y-1">
     <%= f.label :communication_with_students, class: "text-gray-700 montserrat-regular font-bold"%>
     <span class="bg-red-600 text-gray-50 px-1 py-1 rounded">Poor <%= f.radio_button :communication_with_students, 1, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>
     <span class="bg-yellow-600 text-gray-50 px-1 py-1 rounded">Satisfactory <%= f.radio_button :communication_with_students, 2, class: "text-gray-700 px-2 montserrat-regular text-lg border border-gray-300 rounded outline-none focus:border-blue-700" %></span>

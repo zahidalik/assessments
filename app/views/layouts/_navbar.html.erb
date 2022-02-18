@@ -1,15 +1,15 @@
-<div class="h-16 bg-gray-200 text-gray-800 flex justify-around items-center shadow-xl">
+<div data-controller="mobile-view" class="h-16 bg-gray-200 text-gray-800 flex justify-around items-center shadow-xl">
   <div class="flex justify-center items-baseline space-x-3">  
     <%= link_to root_url, class: "px-1 py-1 kaushan-regular text-xl rounded-xl hover:border-l-4 hover:border-b-2 hover:border-gray-500" do %>
       Student Assessment
     <% end %>
     <% if logged_in? %>
-      <%= link_to teachers_url, class: "montserrat-regular px-1 py-1 rounded-xl hover:border-l-2 hover:border-b hover:border-gray-500" do %>
+      <%= link_to teachers_url, class: "hidden md:block montserrat-regular px-1 py-1 rounded-xl hover:border-l-2 hover:border-b hover:border-gray-500" do %>
         All Teachers
       <% end %>
     <% end %>
   </div>
-  <div class="flex justify-between items-center space-x-3">
+  <div class="hidden md:block flex justify-between items-center space-x-3">
     <% unless logged_in? %>
       <%= link_to login_path, class: "px-3 py-1 bg-blue-700 text-gray-50 montserrat-regular rounded" do %>
         Log in
@@ -27,4 +27,29 @@
       <% end %>
     <% end %>
   </div>
+  <div data-action="click->mobile-view#toggle" class="block md:hidden text-gray-700">
+    <button><i class="fa-solid fa-bars h-7 w-7"></i></button>
+  </div>
+</div>
+
+<div id="mobile-menu" class="hidden bg-gray-200 py-8 pr-8 text-gray-800 flex flex-col justify-center items-end space-y-2">
+  <% unless logged_in? %>
+    <%= link_to login_path, class: "px-3 py-1 bg-blue-700 text-gray-50 montserrat-regular rounded" do %>
+      Log in
+    <% end %>
+  <% else %>
+    <%= link_to teachers_url, class: "montserrat-regular px-1 py-1 rounded-xl hover:border-l-2 hover:border-b hover:border-gray-500" do %>
+      All Teachers
+    <% end %>
+    <% if current_user.is_super_admin? || current_user.is_admin? %>
+      <%= link_to user_path(current_user), class: "montserrat-regular text-gray-700 text-lg px-1 py-1" do %>
+        <i class="fa-solid fa-user text-sm"></i> <%= current_user.username %> <% current_user.roles.each do |role| %>
+                                        <span class="text-sm"><%= role.kind %></span>
+                                      <% end %>
+      <% end %>
+    <% end %>
+    <%= link_to logout_path, data: {turbo_method: :delete, turbo_confirm: "Do you want log out?"}, class: "px-3 py-1 bg-red-600 text-gray-50 montserrat-regular rounded" do %>
+      Log out
+    <% end %>
+  <% end %>
 </div>

@@ -1,5 +1,5 @@
 <%= turbo_frame_tag(dom_id(teacher)) do %>
-  <div class="py-2 oswald-light text-2xl text-gray-700 flex flex-row items-baseline space-x-7">
+  <div class="py-2 oswald-light text-2xl text-gray-700 flex flex-row items-center md:space-x-7">
     <div><%= teacher.name %></div>
     <div>
       <%= link_to teacher_path(teacher), data: {"turbo_frame": "_top"}, class: "text-blue-700 text-lg" do %>
