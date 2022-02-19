@@ -1,5 +1,8 @@
 <div class="min-h-screen">
-  <div class="mt-8 oswald-light text-3xl md:text-5xl flex justify-center items-center"><%= @teacher.name %></div>
+  <%= link_to teachers_url, class: "mt-6 text-xl md:text-2xl text-blue-700 flex justify-center items-center" do %>
+    <i class="fa-solid fa-backward"></i>
+  <% end %>
+  <div class="mt-4 oswald-light text-3xl md:text-5xl flex justify-center items-center"><%= @teacher.name %></div>
   <div class="md:grid md:grid-cols-10">
     <div class="md:col-span-3 mt-8 md:mt-14 flex flex-col items-center">
       <% if current_user.is_super_admin? || current_user.is_admin? %>

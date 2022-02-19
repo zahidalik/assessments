@@ -20,6 +20,9 @@
         <%= link_to edit_user_path(user), class: "text-blue-700 text-lg" do %>
           <i class="fa-solid fa-edit"></i>
         <% end %>
+        <%= link_to user_path(user), data: {turbo_method: :delete, turbo_confirm: "Sure to delete #{user.name}"}, class: "text-red-600 text-lg" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
       <% end %>
     </div>
   </div>

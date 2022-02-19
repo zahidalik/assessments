@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import HandleFormController from "./handle_form_controller.js"
+application.register("handle-form", HandleFormController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 

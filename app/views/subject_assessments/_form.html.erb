@@ -1,4 +1,4 @@
-<%= form_for([teacher, classroom, subject_assessment], html: {class: "flex flex-col items-start space-y-4"}) do |f| %>
+<%= form_for([teacher, classroom, subject_assessment], data: { controller: "handle-form", action: "turbo:submit-end->handle-form#submitEnd" }, html: {class: "flex flex-col items-start space-y-4"}) do |f| %>
 
   <% if subject_assessment.errors.any? %>
     <% subject_assessment.errors.full_messages.each do |msg| %>

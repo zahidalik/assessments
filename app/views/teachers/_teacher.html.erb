@@ -1,9 +1,18 @@
 <%= turbo_frame_tag(dom_id(teacher)) do %>
-  <div class="py-2 oswald-light text-2xl text-gray-700 flex flex-row items-center md:space-x-7">
-    <div><%= teacher.name %></div>
+  <div class="py-2 oswald-light text-2xl text-gray-700 flex flex-row items-center md:space-x-1">
     <div>
-      <%= link_to teacher_path(teacher), data: {"turbo_frame": "_top"}, class: "text-blue-700 text-lg" do %>
-        <i class="fa-solid fa-eye"></i>
+      <%= link_to teacher_path(teacher), data: {"turbo_frame": "_top"} do %>
+        <i class="fa-solid fa-link text-sm"></i> <%= teacher.name %>
+      <% end %>
+    </div>
+    <div class="space-x-1">
+      <% if current_user.is_super_admin? %>
+        <%= link_to edit_teacher_path(teacher), class: "text-blue-700 text-sm" do %>
+          <i class="fa-solid fa-edit"></i>
+        <% end %>
+        <%= link_to teacher_path(teacher), data: {turbo_method: :delete, turbo_confirm: "Sure to delete account of #{teacher.name}"}, class: "text-red-600 text-sm" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
       <% end %>
     </div>
   </div>

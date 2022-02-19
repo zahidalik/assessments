@@ -18,14 +18,14 @@ module SessionsHelper
 
   def authenticate_user!
     unless logged_in? # && current_user == @user
-      flash[:alert] = "Prohibited action"
+      flash[:alert] = "Session expired. Please log in."
       redirect_to root_url
     end
   end
 
   def user_should_be_admin
     unless current_user.roles.any? {|role| role.kind == "super admin"} || current_user.roles.any? {|role| role.kind == "admin"}
-      flash[:alert] = "Action probhibited"
+      flash[:alert] = "This action can be done only by admins."
       redirect_to root_url
     end
   end

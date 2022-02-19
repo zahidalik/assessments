@@ -1,4 +1,4 @@
-<%= form_for([teacher, classroom], html: {class: "bg-slate-100 rounded border border-gray-200 px-6 py-4 flex flex-col justify-center items-start space-y-2 shadow-xl"}) do |f| %>
+<%= form_for([teacher, classroom], data: { controller: "handle-form", action: "turbo:submit-end->handle-form#submitEnd" }, html: {class: "bg-slate-100 rounded border border-gray-200 px-6 py-4 flex flex-col justify-center items-start space-y-2 shadow-xl"}) do |f| %>
 
   <%= link_to teacher_url(teacher), class: "text-gray-500" do %>
     <i class="fa-solid fa-arrow-up-from-bracket"></i>

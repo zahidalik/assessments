@@ -1,4 +1,4 @@
-<%= form_for user, html: {class: "w-2/3 flex flex-col justify-center space-y-2 text-gray-700"} do |f| %>
+<%= form_for user, data: { controller: "handle-form", action: "turbo:submit-end->handle-form#submitEnd" }, html: {class: "w-2/3 flex flex-col justify-center space-y-2 text-gray-700"} do |f| %>
   <% if user.errors.any? %>
     <div class="bg-red-200 px-3 py-2 border border-red-600 text-red-600 flex flex-col space-y-1 indent-8">
     <div class="text-lg indent-1"><%= pluralize(user.errors.count, "error") %> prohibited user account from being created: </div>
@@ -17,10 +17,10 @@
   <%= f.text_field :username, class: "px-2 py-1 text-xl montserrat-regular rounded border border-slate-300 focus:outline-none focus:border-blue-600"%>
 
   <%= f.label :password, class: "montserrat-regular" %>
-  <%= f.password_field :password, class: "px-2 py-1 text-xl montserrat-regular rounded border border-slate-300 focus:outline-none focus:border-blue-600" %>
+  <%= f.password_field :password, class: "px-2 py-1 text-xl lato-bold rounded border border-slate-300 focus:outline-none focus:border-blue-600" %>
 
   <%= f.label :password_confirmation, class: "montserrat-regular" %>
-  <%= f.password_field :password_confirmation, class: "px-2 py-1 text-xl montserrat-regular rounded border border-slate-300 focus:outline-none focus:border-blue-600" %>
+  <%= f.password_field :password_confirmation, class: "px-2 py-1 text-xl lato-bold rounded border border-slate-300 focus:outline-none focus:border-blue-600" %>
 
-  <%= f.submit yield(:button_name), class: "w-full py-2 rounded montserrat-regular text-lg text-gray-50 bg-blue-700 shadow-lg" %>
+  <%= f.submit yield(:button_name), class: "w-full py-2 rounded montserrat-regular text-gray-50 bg-blue-700 shadow-lg" %>
 <% end %>

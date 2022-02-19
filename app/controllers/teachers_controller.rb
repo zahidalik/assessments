@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   
   def index
@@ -6,7 +7,18 @@ class TeachersController < ApplicationController
   end
 
   def show
-    @teacher = Teacher.friendly.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @teacher.update(teacher_params)
+      flash.now[:notice] = "User account edited successfully"
+      redirect_to teachers_url
+    else
+      render :edit, status: :bad_request
+    end
   end
   
   def new
@@ -25,9 +37,31 @@ class TeachersController < ApplicationController
     end
   end
 
+  def destroy
+    Classroom.where(teacher: @teacher).each do |classroom|
+      SubjectAssessment.where(teacher: @teacher, classroom: classroom).each do |s_a|
+        s_a.delete
+      end
+      classroom.delete
+    end
+    if @teacher.delete
+      respond_to do |format|
+        format.turbo_stream
+        format.html {redirect_to teachers_url}
+      end
+    else
+      flash.now[:alert] = "Couldnt't delete. Try once again."
+      render :index, bad: :request
+    end
+  end
+
   private
 
   def teacher_params
     params.require(:teacher).permit(:name)
+  end
+
+  def set_teacher
+    @teacher = Teacher.friendly.find(params[:id])
   end
 end
