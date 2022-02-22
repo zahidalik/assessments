@@ -1,3 +1,2 @@
-<%= turbo_stream.update(dom_id(@user)) do %>
-  <div class="mt-2 text-lg text-green-700 flex flex-col justify-center items-center">Deleted successfully</div>
-<% end %>
+<%= turbo_stream.update("flash", partial: "layouts/flash_messages") %>
+<%= turbo_stream.remove(@user) %>

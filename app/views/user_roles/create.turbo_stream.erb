@@ -1,3 +1,1 @@
-<%= turbo_stream.replace("user_role_flash") do %>
-  <div class="text-green-400">role added</div>
-<% end %>
+<%= turbo_stream.update("flash", partial: "layouts/flash_messages") %>

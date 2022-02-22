@@ -9,10 +9,13 @@ class UserRolesController < ApplicationController
     @user_role = @user.user_roles.build(user_roles_params)
 
     if @user_role.save
+      flash.now[:notice] = "User role created successfully"
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to user_url(current_user)}
       end
+    else
+      flash.now[:alert] = "Couldn't create user role."
     end
   end
 

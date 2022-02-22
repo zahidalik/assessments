@@ -28,11 +28,13 @@ class TeachersController < ApplicationController
   def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
+      flash.now[:notice] = "Teacher's account added successfully"
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to teachers_path }
       end
     else
+      flash.now[:alert] = "Couldn't add teacher's account. Please check the form for details"
       render :new, status: :bad_request
     end
   end
@@ -45,12 +47,13 @@ class TeachersController < ApplicationController
       classroom.delete
     end
     if @teacher.delete
+      flash.now[:notice] = "Teacher's account deleted successfully"
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to teachers_url}
       end
     else
-      flash.now[:alert] = "Couldnt't delete. Try once again."
+      flash.now[:alert] = "Couldnt't delete teacher's account. Try once again."
       render :index, bad: :request
     end
   end

@@ -28,11 +28,13 @@ class ClassroomsController < ApplicationController
     @classroom = @teacher.classrooms.build(classroom_params)
 
     if @classroom.save
+      flash.now[:notice] = "Classroom created successfully"
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to teacher_url(@teacher)}
       end
     else
+      flash.now[:alert] =  "Couldn't create classroom. Please check the form for details"
       render :new, status: :bad_request
     end
   end
@@ -42,10 +44,13 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.find(params[:id])
 
     if @classroom.delete
+      flash.now[:notice] = "Classroom deleted successfully"
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to teacher_url(@teacher)}
       end
+    else
+      flash.now[:alert] = "Couldn't delete classroom"
     end
   end
 

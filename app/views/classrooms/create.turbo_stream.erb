@@ -1,1 +1,2 @@
 <%= turbo_stream.append("classrooms", @classroom) %>
+<%= turbo_stream.update("flash", partial: "layouts/flash_messages") %>

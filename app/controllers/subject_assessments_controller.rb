@@ -43,11 +43,13 @@ class SubjectAssessmentsController < ApplicationController
     @subject_assessment.classroom_id = @classroom.id
 
     if @subject_assessment.save
+      flash.now[:notice] = "Assessment added successfully"
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to teacher_url(@teacher)}
       end
     else
+      flash.now[:alert] = "Couldn't add assessment. Please check the form for details"
       render :new, status: :bad_request
     end
   end
@@ -58,10 +60,14 @@ class SubjectAssessmentsController < ApplicationController
     @subject_assessment = SubjectAssessment.find(params[:id])
 
     if @subject_assessment.delete
+      flash.now[:notice] = "Assessment deleted successfully"
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to teacher_classroom_subject_assessments_path(@teacher, @classroom, @subject_assessment)}
       end
+    else
+      flash.now[:alert] = "Couldn't delete assessment. Please retry"
+      render :new, status: :bad_request
     end
   end
 

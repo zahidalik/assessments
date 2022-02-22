@@ -13,8 +13,10 @@
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
-    <%= render "layouts/flash_messages" %>
+    <%= render partial: "layouts/navbar" %>
+    <div class="flex justify-end w-full sticky top-24 z-10" id="flash">
+      <%= render "layouts/flash_messages" %>
+    </div>
     <%= yield %>
   </body>
 </html>

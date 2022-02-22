@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AutohideController from "./autohide_controller.js"
+application.register("autohide", AutohideController)
+
 import HandleFormController from "./handle_form_controller.js"
 application.register("handle-form", HandleFormController)
 

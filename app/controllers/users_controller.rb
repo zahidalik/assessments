@@ -43,6 +43,7 @@ class UsersController < ApplicationController
       user_role.delete
     end
     if @user.delete
+      flash.now[:notice] = "User account deleted successfully."
       respond_to do |format|
         format.turbo_stream
         format.html {redirect_to user_url(current_user)}
